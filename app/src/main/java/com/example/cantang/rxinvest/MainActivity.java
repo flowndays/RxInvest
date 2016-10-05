@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void testObservable(Observable<Integer> observable) {
         subscriptions.add(
-                observable.timeout(1, TimeUnit.SECONDS)
+                observable
                         .compose(integerObservable -> RxUtil.emitDefaultOnTimeout(integerObservable, 1, 1, TimeUnit.SECONDS))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
